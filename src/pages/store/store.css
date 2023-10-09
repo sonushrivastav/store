@@ -1,0 +1,220 @@
+.storeContainer{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 100vw;
+    gap: 10px;
+    padding: 10px;
+}
+
+.FilterContainer{
+    width: 23%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ProductContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 55%;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.CartContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 23%;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.filterHeaderWrapper, .CartHeaderWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.filters, .Cost, .Cart, .Color, .Type, .Templates{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0px;
+}
+
+.costWrapper, .designTemplatesWrapper, .TypeWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ColourWrapper{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 5px;
+}
+.colorContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.colorDiv1, .colorDiv2, .colorDiv3, .colorDiv4, .colorDiv5{
+    width: 25px;
+    height: 25px;
+}
+.colorDiv1{
+background-color: red;
+} 
+.colorDiv2{
+    background-color: cyan;
+
+}
+ .colorDiv3{
+    background-color: yellow;
+
+ }
+  .colorDiv4{
+    background-color: lightgreen;
+
+} 
+.colorDiv5{
+    background-color: goldenrod;
+
+}
+
+.checkboxContainer{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+}
+.price, .template , .typename, .NocartDataMsg{
+    font-family: 'PT Sans', sans-serif;
+
+}
+
+.btnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.applyBtn{
+    background-color: #000;
+    color: white;
+    padding: 7px 10px;
+    border: none;
+    outline: none;
+}
+
+.CartProductWrapper{
+    /* border: 1px solid red; */
+    height: 410px; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.bottomContentWrapper{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+}
+
+.addressWrapper, .dateWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.date, .home{
+    font-size: 15px;
+    font-family: 'PT Sans', sans-serif;
+    color: gray;
+}
+.ordernowBtn{
+    padding: 7px 10px;
+    border: none;
+    outline: none;
+    background-color: rgb(158, 158, 158);
+    color: #fff;
+}
+
+.seacrhProductContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.sortBy{
+    padding: 4px 8px;
+}
+
+.shoeProductWrapper{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three cards in each row */
+    gap: 20px; 
+}
+
+.ShoeCard{
+    /* border: 1px solid #ccc;   */
+  padding: 20px;
+  height: 235px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+}
+
+.imgContainer{
+    height: 300px;
+    width: 170px;
+    background-color: rgb(241, 238, 238);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img{
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+}
+
+.shoename{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 20px;
+}
+.shoeprice{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+}
+
+.priceContainer{
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+    /* border: 1px solid green; */
+}
+
+.ratingContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3px;
+    /* border: 1px solid red; */
+}
