@@ -1,0 +1,94 @@
+.JourneyContainer{
+    /* border: 1px solid green; */
+    margin: 0 auto;
+    width: 85%;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* height: 100vh; */
+  position: relative;
+}
+.imageContainer{
+   width: 100%;
+   position: relative;
+   bottom: 0;
+}
+
+.imageContainer h1{
+    color: white;
+    position: absolute;
+    left: 35%;
+    top:40%;
+    font-size: 60px;
+    font-family: 'PT Sans', sans-serif;
+
+}
+
+.imageContainer::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px; /* Adjust the height of the shadow as needed */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+.imageContainer img{
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+}
+
+.bottomContainer{
+    background-color: black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    padding: 20px;
+}
+
+.bottomContent{
+    border-left: 2px solid gray;
+    width: 100%;
+    height: 80%;
+    padding: 0 20px 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bottomTitle{
+    color: white;
+    font-size: 22px;
+    font-family: 'PT Sans', sans-serif;
+
+}
+.bottomPara{
+    color: white;
+    font-size: 16px;
+    font-family: 'PT Sans', sans-serif;
+
+}
+.timelineCircle{
+    position: relative;
+}
+.timelineCircle:before{
+    content: "";
+    display: block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: #000;
+    border: 2px solid #ddd;
+    position: absolute;
+    top: 0px;
+    left: -35px;
+}

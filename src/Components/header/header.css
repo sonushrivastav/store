@@ -1,0 +1,47 @@
+.headerContainer{
+    display: flex;
+    width: 85%;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid green; */
+    margin: 30px auto;
+}
+.logoImg{
+    object-fit: contain;
+    height: 40px;
+    width: 40px;
+}
+
+.NavContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+.NavContainer .links{
+    text-decoration: none;
+    color: black;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+}
+
+.NavContainer .activeLinks{
+    color: black;
+    font-size: 16px;
+    font-family: 'PT Sans', sans-serif;
+    text-underline-offset: 7px;
+    text-decoration-thickness: 1.3px;
+}
+
+.UserWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.UserWrapper span{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+   
+}

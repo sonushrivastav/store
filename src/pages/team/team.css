@@ -1,0 +1,90 @@
+.TeamContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  /* border: 1px solid green; */
+  padding-top: 20px;
+}
+
+.teamHeading{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.bottomTxt{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.cardContainer .card {
+    border: 1px solid #ccc;
+    display: flex;
+    width: 200px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardImg{
+    width: 200px;
+    height: 200px;
+    margin-top: -13px;
+    object-fit: cover;
+}
+
+.socialWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.Name{
+    font-family: 'PT Sans', sans-serif;
+   font-size: 22px;
+   font-weight: 500;
+}
+
+.Role{
+    font-family: 'PT Sans', sans-serif;
+font-weight: 500;
+font-size: 15px;
+}
+
+.cardDesignation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.socialImg{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .cardContainer {
+        grid-template-columns: repeat(3, 1fr); /* Three cards in a row on iPad */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cardContainer{
+        grid-template-columns: repeat(1, 1fr); /* One card in a row on mobile */
+    }
+}

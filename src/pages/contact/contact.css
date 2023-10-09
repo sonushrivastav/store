@@ -1,0 +1,66 @@
+.contactWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contactContainer{
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 25px auto;
+    width: 320px;
+    padding: 50px;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.supportContent{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.supportEmail{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 21px;
+}
+
+.supportPara{
+    font-family: 'PT Sans', sans-serif;
+
+}
+
+.title{
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 500;
+}
+
+.stayinTouch{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+}
+
+.socialContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.socialIconsWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.socialImg{
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+}
