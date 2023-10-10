@@ -77,15 +77,15 @@ background-color: red;
 
 }
  .colorDiv3{
-    background-color: yellow;
+    background-color: black;
 
  }
   .colorDiv4{
-    background-color: lightgreen;
+    background-color: greenyellow;
 
 } 
 .colorDiv5{
-    background-color: goldenrod;
+    background-color: orange;
 
 }
 
@@ -164,7 +164,7 @@ background-color: red;
 
 .shoeProductWrapper{
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three cards in each row */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 20px; 
 }
 
@@ -176,6 +176,7 @@ background-color: red;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  cursor: pointer;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
 }
 
@@ -217,4 +218,120 @@ background-color: red;
     justify-content: space-between;
     gap: 3px;
     /* border: 1px solid red; */
+}
+
+.singleProductContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 78%;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+.yourdesignSpace{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 20px;
+} 
+
+.backbtnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap:10px;
+}
+
+.imageAndProductDeatilWrapper{
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.productContainerWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.btnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    
+}
+
+.fullImage{
+    width: 50%;
+    /* border: 1px solid green; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    height: 400px;
+}
+.productimg{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.smallImage{
+    width: 10%;
+    /* border: 1px solid greenyellow; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100px;
+    gap: 40px;
+}
+
+.smallimgproduct{
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
+    /* border: 1px solid red; */
+}
+.productDetail{
+    width: 40%;
+    border: 1px solid palevioletred;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.sharedesign{
+    border: 1px solid black;
+    padding: 5px 15px;
+    font-family: 'PT Sans', sans-serif;
+
+}
+.addtocart{
+    border: none;
+    outline: none;
+    background-color: black;
+    padding: 7px 15px;
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    cursor: pointer;
+
+}
+.rateproduct{
+    font-family: 'PT Sans', sans-serif;
+font-size: 17px;
+}
+
+.ratingwrapper{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 8px;
 }

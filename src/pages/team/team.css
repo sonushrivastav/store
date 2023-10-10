@@ -12,6 +12,7 @@
     font-family: 'PT Sans', sans-serif;
     font-size: 22px;
     font-weight: 500;
+    text-align: center;
 }
 
 .bottomTxt{
@@ -24,6 +25,8 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
+  justify-content: center;
+  /* width: 100%; */
 }
 
 .cardContainer .card {
@@ -36,6 +39,7 @@
     border-radius: 10px;
     gap: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .cardImg{
@@ -79,12 +83,14 @@ font-size: 15px;
 
 @media screen and (max-width: 1024px) {
     .cardContainer {
-        grid-template-columns: repeat(3, 1fr); /* Three cards in a row on iPad */
+        grid-template-columns: repeat(3, 1fr); 
     }
 }
 
 @media screen and (max-width: 768px) {
     .cardContainer{
-        grid-template-columns: repeat(1, 1fr); /* One card in a row on mobile */
+        grid-template-columns: repeat(1, 1fr); 
     }
+
+    
 }

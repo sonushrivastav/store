@@ -1,180 +1,279 @@
-import React from "react";
+import React, { useState } from "react";
 import "./store.css";
 import { LuFilter } from "react-icons/lu";
 import { RiSearchLine, RiShoppingBag3Line } from "react-icons/ri";
 import { BiMap } from "react-icons/bi";
 import { CiCalendarDate } from "react-icons/ci";
 import img from "../../assets/shoe2.png";
-import {IoMdStarOutline,IoMdStar,IoMdStarHalf} from "react-icons/io"
-
+import {
+  IoMdStarOutline,
+  IoMdStar,
+  IoMdStarHalf,
+  IoIosArrowBack,
+} from "react-icons/io";
 
 const Store = () => {
   const shoeArray = [
     {
-      img: img,
+      id: 1,
+      img: "https://png.pngtree.com/png-vector/20230407/ourmid/pngtree-green-transparent-sports-shoes-png-image_6687298.png",
       Shoename: "KSL 01",
       Price: "Rs. 2000/-",
-      rating:4.5
+      rating: 4.5,
+      type: "sports",
+      color: "purple",
     },
     {
-      img: img,
+      id: 2,
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCBR_0o3npF5vbpgbBc77a1_i_oe6bzCcf8RNH2RB6dXQOgFmC7rIAzwb3SOTEqiBIjVk&usqp=CAU",
       Shoename: "KSW 01",
       Price: "Rs. 2500/-",
-      rating:2.5
-
+      rating: 2.5,
+      type: "sneakers",
+      color: "orange",
     },
 
     {
-      img: img,
+      id: 3,
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxc2HN85NtDZ9A0XOfTNIBHnYkfpkcugmVuaN65LcZPPktGDmfWyWmUdQSO4Kn0LDhJy8&usqp=CAU",
       Shoename: "Royal S 01",
       Price: "Rs. 6000/-",
-      rating:3.5
-
+      rating: 3.5,
+      type: "loafers",
+      color: "red",
     },
 
     {
-      img: img,
-      Shoename: "KSL 01",
-      Price: "Rs. 2000/-",
-      rating:2
-
+      id: 4,
+      img: "https://png.pngtree.com/png-vector/20230912/ourmid/pngtree-3d-blue-sneakers-shoes-isolated-concept-3d-render-illustration-png-image_10022169.png",
+      Shoename: "LWS 07",
+      Price: "Rs. 4500/-",
+      rating: 2,
+      type: "sneakers",
+      color: "cyan",
     },
     {
-      img: img,
-      Shoename: "KSW 01",
-      Price: "Rs. 2500/-",
-      rating:4
-
+      id: 5,
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCkVNU300RuQ1R8n8CI9J5Lx03ydbeuhLgibsKfcMoSHokmMe8D803_8gN4iclS2X367s&usqp=CAU",
+      Shoename: "SKW 1F",
+      Price: "Rs. 7000/-",
+      rating: 4,
+      type: "sneakers",
+      color: "black",
     },
 
     {
-      img: img,
-      Shoename: "Royal S 01",
+      id: 6,
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCX1oMbOkiIiXh7MYEc0NQ0M7tZ-q_FcZcpmmotVAhBGLp0mV_DIbYqlgUXpQ68nhiwWg&usqp=CAU",
+      Shoename: "Royal B 05",
       Price: "Rs. 6000/-",
-      rating:3.5
-
+      rating: 3.5,
+      type: "sports",
+      color: "blue",
     },
   ];
+
+  const [openProductPage, setOpenProductPage] = useState(false);
+  const [singleproductdata, setSingleProductData] = useState();
+  const handleopenProductpage = (shoeid) => {
+    setOpenProductPage(true);
+    setSingleProductData(shoeid);
+  };
 
   return (
     <>
       <div className="storeContainer">
-        <div className="FilterContainer">
-          <div className="filterHeaderWrapper">
-            <h3 className="filters">FILTERS</h3>
-            <LuFilter size={24} />
-          </div>
+        {openProductPage ? (
+          <>
+            <div className="singleProductContainer">
+              <div className="backbtnContainer">
+                <IoIosArrowBack
+                  size={25}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setOpenProductPage(false)}
+                />
+                <span className="yourdesignSpace">your design space</span>
+              </div>
 
-          {/* Cost */}
-          <div className="costWrapper">
-            <h3 className="Cost">Cost</h3>
-            <div className="checkboxContainer">
-              <input type="checkbox" />
-              <span className="price">Rs. 1500-4000</span>
-            </div>
-            <div className="checkboxContainer">
-              <input type="checkbox" />
-              <span className="price">Rs. 1500-4000</span>
-            </div>
-            <div className="checkboxContainer">
-              <input type="checkbox" />
-              <span className="price">Rs. 1500-4000</span>
-            </div>
-          </div>
+              <div className="imageAndProductDeatilWrapper">
+                {shoeArray
+                  .filter((shoe) => shoe?.id === singleproductdata)
+                  .map((shoe) => (
+                    <>
 
-          {/* Colours */}
-          <div className="ColourWrapper">
-            <h3 className="Color">Colour</h3>
-            <div className="colorContainer">
-              <span className="colorDiv1"></span>
-              <span className="colorDiv2"></span>
-              <span className="colorDiv3"></span>
-              <span className="colorDiv4"></span>
-              <span className="colorDiv5"></span>
-            </div>
-          </div>
-
-          {/* Design Templates */}
-          <div className="designTemplatesWrapper">
-            <h3 className="Templates">Design templates</h3>
-            <div className="checkboxContainer">
-              <input type="checkbox" />
-              <span className="template">2</span>
-            </div>
-            <div className="checkboxContainer">
-              <input type="checkbox" />
-              <span className="template">3</span>
-            </div>
-            <div className="checkboxContainer">
-              <input type="checkbox" />
-              <span className="template">3+</span>
-            </div>
-          </div>
-
-          {/* Types */}
-          <div className="TypeWrapper">
-            <h3 className="Type">Type</h3>
-            <div className="checkboxContainer">
-              <input type="checkbox" />
-              <span className="typename">Loafers</span>
-            </div>
-            <div className="checkboxContainer">
-              <input type="checkbox" />
-              <span className="typename">Sneakers</span>
-            </div>
-          </div>
-
-          <div className="btnContainer">
-            <button className="applyBtn">apply</button>
-          </div>
-        </div>
-
-        {/* product */}
-        <div className="ProductContainer">
-          <div className="filterHeaderWrapper">
-            <h3 className="filters">SHOES</h3>
-            <div className="seacrhProductContainer">
-              <RiSearchLine size={20} />
-              <button className="sortBy">sort by</button>
-            </div>
-          </div>
-
-          <div className="shoeProductWrapper">
-            {shoeArray?.map((shoe) => {
-
-              const maxStars = 5;
-              const fullstars = Math.floor(shoe?.rating)
-              const halfStar = shoe?.rating % 1 !== 0
-              const starElements = [];
-              for (let i = 0; i < fullstars; i++){
-                starElements.push(<span key={i}><IoMdStar color="gold"/></span>)
-              }
-              if (halfStar) {
-                starElements.push(<span><IoMdStarHalf color="gold"/></span>)
-              }
-
-              while (starElements.length < maxStars) {
-                starElements.push(<span key={starElements.length}><IoMdStarOutline color="gold"/></span>)
-              }
-              return (
-                <>
-                  <div className="ShoeCard">
-                    <div className="imgContainer">
-                      <img src={shoe.img} alt="" className="img" />
-                    </div>
-                    <div className="priceContainer">
-                      <span className="shoename">{shoe?.Shoename}</span>
-                      <div className="ratingContainer">
-                        <span className="shoeprice">{shoe?.Price}</span>
-                        <span>{starElements}</span>
+                    <div key={shoe?.id} className="productContainerWrapper">
+                        <div className="fullImage">
+                          <img src={shoe?.img} alt="" className="productimg"/>
                       </div>
+                        <div className="smallImage">
+                          <div><img src={shoe?.img} alt="" className="smallimgproduct"/></div>
+                          <div><img src={shoe?.img} alt="" className="smallimgproduct"/></div>
+                          <div><img src={shoe?.img} alt="" className="smallimgproduct"/></div>
+                      </div>
+                        <div className="productDetail">
+                          <div>
+                            <h3>{ shoe?.Shoename}</h3>
+                            <span>by KICKSUP and you</span>
+                          </div>
+
+                          <div>
+                            <span>80 reviews</span>
+                          </div>
+                      </div>
+                      
                     </div>
-                  </div>
-                </>
-              );
-            })}
-          </div>
-        </div>
+                      <div className="ratingwrapper">
+                        <span className="rateproduct">Rate Product</span>
+                        <IoMdStarOutline color="yellow" size={19}/>
+                        <IoMdStarOutline color="yellow" size={19}/>
+                        <IoMdStarOutline color="yellow" size={19}/>
+                        <IoMdStarOutline color="yellow" size={19}/>
+                      </div>
+
+                      <div className="btnContainer">
+                        <button className="sharedesign">share design</button>
+                        <button className="addtocart">add to cart</button>
+                      </div>
+                    </>
+                  ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            {/* filter card */}
+            <div className="FilterContainer">
+              <div className="filterHeaderWrapper">
+                <h3 className="filters">FILTERS</h3>
+                <LuFilter size={24} />
+              </div>
+
+              {/* Cost */}
+              <div className="costWrapper">
+                <h3 className="Cost">Cost</h3>
+                <div className="checkboxContainer">
+                  <input type="checkbox" />
+                  <span className="price">Rs. 1500-4000</span>
+                </div>
+                <div className="checkboxContainer">
+                  <input type="checkbox" />
+                  <span className="price">Rs. 4000-7000</span>
+                </div>
+                <div className="checkboxContainer">
+                  <input type="checkbox" />
+                  <span className="price">Rs. 7000-9000</span>
+                </div>
+              </div>
+
+              {/* Colours */}
+              <div className="ColourWrapper">
+                <h3 className="Color">Colour</h3>
+                <div className="colorContainer">
+                  <span className="colorDiv1"></span>
+                  <span className="colorDiv2"></span>
+                  <span className="colorDiv3"></span>
+                  <span className="colorDiv4"></span>
+                  <span className="colorDiv5"></span>
+                </div>
+              </div>
+
+              {/* Design Templates */}
+              <div className="designTemplatesWrapper">
+                <h3 className="Templates">Design templates</h3>
+                <div className="checkboxContainer">
+                  <input type="checkbox" />
+                  <span className="template">2</span>
+                </div>
+                <div className="checkboxContainer">
+                  <input type="checkbox" />
+                  <span className="template">3</span>
+                </div>
+                <div className="checkboxContainer">
+                  <input type="checkbox" />
+                  <span className="template">3+</span>
+                </div>
+              </div>
+
+              {/* Types */}
+              <div className="TypeWrapper">
+                <h3 className="Type">Type</h3>
+                <div className="checkboxContainer">
+                  <input type="checkbox" />
+                  <span className="typename">Loafers</span>
+                </div>
+                <div className="checkboxContainer">
+                  <input type="checkbox" />
+                  <span className="typename">Sneakers</span>
+                </div>
+              </div>
+
+              <div className="btnContainer">
+                <button className="applyBtn">apply</button>
+              </div>
+            </div>
+
+            {/* product */}
+            <div className="ProductContainer">
+              <div className="filterHeaderWrapper">
+                <h3 className="filters">SHOES</h3>
+                <div className="seacrhProductContainer">
+                  <RiSearchLine size={20} />
+                  <button className="sortBy">sort by</button>
+                </div>
+              </div>
+
+              <div className="shoeProductWrapper">
+                {shoeArray?.map((shoe) => {
+                  const maxStars = 5;
+                  const fullstars = Math.floor(shoe?.rating);
+                  const halfStar = shoe?.rating % 1 !== 0;
+                  const starElements = [];
+                  for (let i = 0; i < fullstars; i++) {
+                    starElements.push(
+                      <span key={i}>
+                        <IoMdStar color="gold" />
+                      </span>
+                    );
+                  }
+                  if (halfStar) {
+                    starElements.push(
+                      <span>
+                        <IoMdStarHalf color="gold" />
+                      </span>
+                    );
+                  }
+
+                  while (starElements.length < maxStars) {
+                    starElements.push(
+                      <span key={starElements.length}>
+                        <IoMdStarOutline color="gold" />
+                      </span>
+                    );
+                  }
+                  return (
+                    <>
+                      <div
+                        className="ShoeCard"
+                        onClick={() => handleopenProductpage(shoe?.id)}
+                      >
+                        <div className="imgContainer">
+                          <img src={shoe.img} alt="" className="img" />
+                        </div>
+                        <div className="priceContainer">
+                          <span className="shoename">{shoe?.Shoename}</span>
+                          <div className="ratingContainer">
+                            <span className="shoeprice">{shoe?.Price}</span>
+                            <span>{starElements}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            </div>
+          </>
+        )}
 
         {/* cart */}
         <div className="CartContainer">

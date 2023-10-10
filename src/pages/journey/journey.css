@@ -92,3 +92,47 @@
     top: 0px;
     left: -35px;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 767px) {
+    .JourneyContainer {
+      width: 100%;
+      padding: 20px; /* Add some spacing around the content */
+    }
+  
+    .imageContainer h1 {
+      font-size: 40px; /* Adjust the font size for smaller screens */
+      left: 20px; /* Adjust the position of the title */
+      top: 20px;
+      text-align: center;
+      position: absolute;
+      left: 20%;
+      top:40%;
+    }
+  
+    .imageContainer::after {
+      height: 100px; /* Adjust the height of the shadow for smaller screens */
+    }
+  
+    .imageContainer img {
+      height: auto; /* Allow the image to scale with the screen width */
+      max-width: 100%; /* Ensure the image fits within its container */
+    }
+  
+    .bottomContainer {
+      height: auto; /* Allow the container to expand based on content */
+      padding: 10px; /* Add spacing around the content */
+    }
+  
+    .bottomTitle {
+      font-size: 20px; /* Adjust the font size for smaller screens */
+    }
+  
+    .bottomPara {
+      font-size: 14px; /* Adjust the font size for smaller screens */
+    }
+  
+    .timelineCircle:before {
+      left: -35px; /* Adjust the position of the timeline circle */
+    }
+  }
