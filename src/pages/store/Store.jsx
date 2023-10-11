@@ -4,6 +4,7 @@ import { LuFilter } from "react-icons/lu";
 import { RiSearchLine, RiShoppingBag3Line } from "react-icons/ri";
 import { BiMap } from "react-icons/bi";
 import { CiCalendarDate } from "react-icons/ci";
+import {AiOutlineCloseCircle} from "react-icons/ai"
 import img from "../../assets/shoe2.png";
 import {
   IoMdStarOutline,
@@ -22,6 +23,10 @@ const Store = () => {
       rating: 4.5,
       type: "sports",
       color: "purple",
+      review: 40,
+      size: 8,
+      template:1,
+      offers: "Get an exclusive 40% off shopping with HDFC bank",
     },
     {
       id: 2,
@@ -29,8 +34,12 @@ const Store = () => {
       Shoename: "KSW 01",
       Price: "Rs. 2500/-",
       rating: 2.5,
-      type: "sneakers",
+      type: "Sneakers",
       color: "orange",
+      review: 80,
+      size: 10,
+      template:3,
+      offers: "Get an exclusive 20% off shopping with SBI bank",
     },
 
     {
@@ -39,8 +48,12 @@ const Store = () => {
       Shoename: "Royal S 01",
       Price: "Rs. 6000/-",
       rating: 3.5,
-      type: "loafers",
+      type: "Loafers",
       color: "red",
+      review: 37,
+      size: 7,
+      template:2,
+      offers: "Get an exclusive 35% off shopping with IDFC First bank",
     },
 
     {
@@ -49,8 +62,12 @@ const Store = () => {
       Shoename: "LWS 07",
       Price: "Rs. 4500/-",
       rating: 2,
-      type: "sneakers",
+      type: "Sneakers",
       color: "cyan",
+      review: 69,
+      size: 8,
+      template:4,
+      offers: "Get an exclusive 28% off shopping with ICICI bank",
     },
     {
       id: 5,
@@ -58,8 +75,12 @@ const Store = () => {
       Shoename: "SKW 1F",
       Price: "Rs. 7000/-",
       rating: 4,
-      type: "sneakers",
+      type: "Sneakers",
       color: "black",
+      review: 90,
+      size: 9,
+      template:2,
+      offers: "Get an exclusive 18% off shopping with AXIS bank",
     },
 
     {
@@ -68,8 +89,12 @@ const Store = () => {
       Shoename: "Royal B 05",
       Price: "Rs. 6000/-",
       rating: 3.5,
-      type: "sports",
+      type: "Loafers",
       color: "blue",
+      review: 85,
+      size: 8,
+      template:3,
+      offers: "Get an exclusive 38% off shopping with YES bank",
     },
   ];
 
@@ -79,6 +104,35 @@ const Store = () => {
     setOpenProductPage(true);
     setSingleProductData(shoeid);
   };
+
+
+  const [cart,setCart] = useState([])
+  // addtocart
+  const addtoCart = (data) => {
+    setCart([data])
+    // console.log(data);
+  }
+
+  //removecart 
+  const removeCart = (data) => {
+    
+     const removedata = cart?.filter((cart) => {
+         cart?.id == data?.id
+       })
+    
+    setCart(removedata);
+  }
+  console.log(cart);
+
+  const sorteShoe = [...shoeArray].sort((a, b) => {
+    // const priceA = parseFloat(a.Shoename)
+    // return a.Shoename.localeCompare(b.Shoename);
+    const priceA = parseFloat(a.Price.replace(/[^0-9.-]+/g, ''));
+  const priceB = parseFloat(b.Price.replace(/[^0-9.-]+/g, ''));
+
+  // Sort in ascending order based on price
+  return priceA - priceB;
+  })
 
   return (
     <>
@@ -98,44 +152,334 @@ const Store = () => {
               <div className="imageAndProductDeatilWrapper">
                 {shoeArray
                   .filter((shoe) => shoe?.id === singleproductdata)
-                  .map((shoe) => (
-                    <>
+                  .map((shoe) => {
+                    const maxStars = 5;
+                    const fullstars = Math.floor(shoe?.rating);
+                    const halfStar = shoe?.rating % 1 !== 0;
+                    const starElements = [];
+                    for (let i = 0; i < fullstars; i++) {
+                      starElements.push(
+                        <span key={i}>
+                          <IoMdStar color="gold" />
+                        </span>
+                      );
+                    }
+                    if (halfStar) {
+                      starElements.push(
+                        <span>
+                          <IoMdStarHalf color="gold" />
+                        </span>
+                      );
+                    }
 
-                    <div key={shoe?.id} className="productContainerWrapper">
-                        <div className="fullImage">
-                          <img src={shoe?.img} alt="" className="productimg"/>
-                      </div>
-                        <div className="smallImage">
-                          <div><img src={shoe?.img} alt="" className="smallimgproduct"/></div>
-                          <div><img src={shoe?.img} alt="" className="smallimgproduct"/></div>
-                          <div><img src={shoe?.img} alt="" className="smallimgproduct"/></div>
-                      </div>
-                        <div className="productDetail">
-                          <div>
-                            <h3>{ shoe?.Shoename}</h3>
-                            <span>by KICKSUP and you</span>
+                    while (starElements.length < maxStars) {
+                      starElements.push(
+                        <span key={starElements.length}>
+                          <IoMdStarOutline color="gold" />
+                        </span>
+                      );
+                    }
+                    return (
+                      <>
+                        <div key={shoe?.id} className="productContainerWrapper">
+                          <div className="fullImage">
+                            <img
+                              src={shoe?.img}
+                              alt=""
+                              className="productimg"
+                            />
                           </div>
-
-                          <div>
-                            <span>80 reviews</span>
+                          <div className="smallImage">
+                            <img
+                              src={shoe?.img}
+                              alt=""
+                              className="smallimgproduct"
+                            />
+                            <img
+                              src={shoe?.img}
+                              alt=""
+                              className="smallimgproduct"
+                            />
+                            <img
+                              src={shoe?.img}
+                              alt=""
+                              className="smallimgproduct"
+                            />
                           </div>
-                      </div>
-                      
-                    </div>
-                      <div className="ratingwrapper">
-                        <span className="rateproduct">Rate Product</span>
-                        <IoMdStarOutline color="yellow" size={19}/>
-                        <IoMdStarOutline color="yellow" size={19}/>
-                        <IoMdStarOutline color="yellow" size={19}/>
-                        <IoMdStarOutline color="yellow" size={19}/>
-                      </div>
+                          <div className="productDetail">
+                            <div>
+                              <h3 className="shoeName">{shoe?.Shoename}</h3>
+                              <span>by KICKSUP and you</span>
+                            </div>
 
-                      <div className="btnContainer">
-                        <button className="sharedesign">share design</button>
-                        <button className="addtocart">add to cart</button>
-                      </div>
-                    </>
-                  ))}
+                            <div className="revieRating">
+                              <span>{starElements}</span>
+                              <span>{shoe?.review} reviews</span>
+                            </div>
+
+                            <div className="priceOffer">
+                              <span style={{ fontSize: "20px" }}>
+                                {shoe?.Price}
+                              </span>
+                              <span style={{ fontSize: "14px" }}>
+                                {shoe?.offers}
+                              </span>
+                            </div>
+
+                            <div className="fontSoleSizeColorWrapper">
+                              <div className="frontShoe">
+                                <span>Front</span>
+                                <div className="chess-block">
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                </div>
+                                <div className="cyanBlock">
+                                </div>
+                                <div className="Cyanchess-block">
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="middleShoe">
+                                <span style={{marginLeft:"0px"}}>Midd</span>
+                                <div className="chess-block">
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                </div>
+                                <div className="cyanBlock">
+                                </div>
+                                <div className="Cyanchess-block">
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="backShoe">
+                                <span>Back</span>
+                                <div className="chess-block">
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                </div>
+                                <div className="cyanBlock">
+                                </div>
+                                <div className="Cyanchess-block">
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="sHoeSole">
+                                <span>Sole</span>
+                                <div className="chess-block">
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                </div>
+                                <div className="cyanBlock">
+                                </div>
+                                <div className="Cyanchess-block">
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                  </div>
+                                  <div className="row">
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                    <div className="square black"></div>
+                                    <div className="square white"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="shoeSize">
+                                <span>Size</span>
+                                <span className="numberBlock">7</span>
+                                <span className="numberBlock">8</span>
+                                <span className="numberBlock">9</span>
+                                <span className="numberBlock">10</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="ratingwrapper">
+                          <span className="rateproduct">Rate Product</span>
+                          <IoMdStarOutline color="yellow" size={19} />
+                          <IoMdStarOutline color="yellow" size={19} />
+                          <IoMdStarOutline color="yellow" size={19} />
+                          <IoMdStarOutline color="yellow" size={19} />
+                        </div>
+
+                        <div className="btnContainer">
+                          <button className="sharedesign">share design</button>
+                          <button onClick={()=> addtoCart(shoe)} className="addtocart">add to cart</button>
+                        </div>
+                      </>
+                    );
+                  })}
               </div>
             </div>
           </>
@@ -190,7 +534,7 @@ const Store = () => {
                 </div>
                 <div className="checkboxContainer">
                   <input type="checkbox" />
-                  <span className="template">3+</span>
+                  <span className="template">1</span>
                 </div>
               </div>
 
@@ -199,7 +543,7 @@ const Store = () => {
                 <h3 className="Type">Type</h3>
                 <div className="checkboxContainer">
                   <input type="checkbox" />
-                  <span className="typename">Loafers</span>
+                  <span className="typename" >Loafers</span>
                 </div>
                 <div className="checkboxContainer">
                   <input type="checkbox" />
@@ -218,7 +562,7 @@ const Store = () => {
                 <h3 className="filters">SHOES</h3>
                 <div className="seacrhProductContainer">
                   <RiSearchLine size={20} />
-                  <button className="sortBy">sort by</button>
+                  <button className="sortBy" onClick={()=>sorteShoe}>sort by</button>
                 </div>
               </div>
 
@@ -282,25 +626,50 @@ const Store = () => {
             <RiShoppingBag3Line size={24} />
           </div>
 
+          
+
           <div className="CartProductWrapper">
-            <span className="NocartDataMsg">
+            {
+              cart?.length ?
+            cart?.map((data) => {
+              return (
+                <>
+                  <div className="cartContainer">
+                    <AiOutlineCloseCircle onClick={()=>removeCart(data)} color="red" style={{ position: "absolute", top:"0px", left:"90%", cursor:"pointer"}} size={17}/>
+                    <img src={data?.img} alt="" className="cartImg"/>
+                    <div style={{display:"flex", alignItems:"start",gap:"5px", flexDirection:"column"}}>
+                      <div>
+                        <h4 style={{fontSize:"14px"}}>{ data?.Shoename}</h4>
+                        <span style={{fontSize:"12px"}}>by KICKSUP and you</span>
+                      </div>
+                      <span style={{fontSize:"14px"}}>{ data?.Price}</span>
+                    </div>
+                  </div>
+                </>
+              )
+            }) : <span className="NocartDataMsg">
               What's stopping you, designer?
             </span>
+            }
+            
           </div>
+          
+            
+            
 
           <div className="bottomContentWrapper">
             <div className="addressWrapper">
-              <BiMap size={20} color="gray" />
-              <span className="home">Home</span>
+              <BiMap size={20} color={`${cart?.length ? "black" :"gray"}`} />
+              <span className={` ${cart?.length ? "homeBlack" :"home"} `}>Home</span>
             </div>
             <div className="dateWrapper">
-              <CiCalendarDate size={20} color="gray" />
-              <span className="date">Seleted date</span>
+              <CiCalendarDate size={20} color={`${cart?.length ? "black" : "gray"}`} />
+              <span className={` ${cart?.length ? "dateBlack" :"date"}`}>Seleted date</span>
             </div>
           </div>
 
           <div className="btnContainer">
-            <button className="ordernowBtn">order now</button>
+            <button className={` ${cart?.length  ? "orderNowBlack" : "ordernowBtn"} `}>order now</button>
           </div>
         </div>
       </div>
