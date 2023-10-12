@@ -69,23 +69,40 @@
     width: 25px;
     height: 25px;
 }
+
+.colorDiv1.active, 
+.colorDiv2.active, 
+.colorDiv3.active, 
+.colorDiv4.active, 
+.colorDiv5.active{
+  border: 1px solid #000; /* Add a border for the active state */
+  transform: scale(1.2);
+  border-radius: 5px;
+}
+
 .colorDiv1{
 background-color: red;
+cursor: pointer;
+
 } 
 .colorDiv2{
     background-color: cyan;
+    cursor: pointer;
 
 }
  .colorDiv3{
     background-color: black;
+    cursor: pointer;
 
  }
   .colorDiv4{
     background-color: greenyellow;
+    cursor: pointer;
 
 } 
 .colorDiv5{
     background-color: orange;
+    cursor: pointer;
 
 }
 
@@ -166,6 +183,7 @@ background-color: red;
 
 .sortBy{
     padding: 4px 8px;
+    cursor: pointer;
 }
 
 .shoeProductWrapper{
