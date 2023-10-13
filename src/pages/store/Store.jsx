@@ -108,15 +108,19 @@ const Store = () => {
   const [cart, setCart] = useState([]);
   // addtocart
   const addtoCart = (data) => {
-    setCart([data]);
+    const itemIndex = cart.findIndex((cartItem) => cartItem?.id === data?.id);
+    if (itemIndex !== -1) {
+      return
+    }
+    setCart(prev=>[...prev,data])
     // console.log(data);
   };
 
   //removecart
   const removeCart = (data) => {
-    const removedata = cart?.filter((cart) => {
-      cart?.id == data?.id;
-    });
+    const removedata = cart?.filter((carts) => 
+      carts?.id !== data
+    );
 
     setCart(removedata);
   };
@@ -194,10 +198,10 @@ const Store = () => {
 
   const clearAllFilters = () => {
     setSelectedFilters({
-      color: [], // or the initial value for color filter
-      cost: [], // or the initial value for cost filter
-      template: [], // or the initial value for template filter
-      type: [], // or the initial value for type filter
+      color: [], 
+      cost: [], 
+      template: [], 
+      type: [], 
     });
   };
 
@@ -562,22 +566,22 @@ const Store = () => {
             <div className="FilterContainer">
               <div className="filterHeaderWrapper">
                 <h3 className="filters">FILTERS</h3>
-                <LuFilter size={24} cursor="pointer" onClick={()=>clearAllFilters}/>
+                <LuFilter size={24} cursor="pointer" onClick={()=>clearAllFilters()}/>
               </div>
 
               {/* Cost */}
               <div className="costWrapper">
                 <h3 className="Cost">Cost</h3>
                 <div className="checkboxContainer">
-                  <input type="checkbox" value="1500-4000" onChange={() => handleFilterChange('cost', '1500-4000')}/>
+                  <input type="checkbox" value={selectedFilters.cost.includes("1500-4000")} onChange={() => handleFilterChange('cost', '1500-4000')}/>
                   <span className="price">Rs. 1500-4000</span>
                 </div>
                 <div className="checkboxContainer">
-                  <input type="checkbox" value="4000-7000" onChange={() => handleFilterChange('cost', '4000-7000')}/>
+                  <input type="checkbox" value={selectedFilters.cost.includes("4000-7000")} onChange={() => handleFilterChange('cost', '4000-7000')}/>
                   <span className="price">Rs. 4000-7000</span>
                 </div>
                 <div className="checkboxContainer">
-                  <input type="checkbox" value="7000-9000" onChange={() => handleFilterChange('cost', '7000-9000')}/>
+                  <input type="checkbox" value={selectedFilters.cost.includes("7000-9000")} onChange={() => handleFilterChange('cost', '7000-9000')}/>
                   <span className="price">Rs. 7000-9000</span>
                 </div>
               </div>
@@ -599,15 +603,15 @@ const Store = () => {
               <div className="designTemplatesWrapper">
                 <h3 className="Templates">Design templates</h3>
                 <div className="checkboxContainer">
-                  <input type="checkbox" value="2" onChange={() => handleFilterChange('templates', 2)}/>
+                  <input type="checkbox" onChange={() => handleFilterChange('templates', 2)}/>
                   <span className="template">2</span>
                 </div>
                 <div className="checkboxContainer">
-                  <input type="checkbox" value="3" onChange={() => handleFilterChange('templates', 3)}/>
+                  <input type="checkbox"  onChange={() => handleFilterChange('templates', 3)}/>
                   <span className="template">3</span>
                 </div>
                 <div className="checkboxContainer">
-                  <input type="checkbox" value="1" onChange={() => handleFilterChange('templates', 1)}/>
+                  <input type="checkbox"  onChange={() => handleFilterChange('templates', 1)}/>
                   <span className="template">1</span>
                 </div>
               </div>
@@ -711,7 +715,7 @@ const Store = () => {
                   <>
                     <div className="cartContainer">
                       <AiOutlineCloseCircle
-                        onClick={() => removeCart(data)}
+                        onClick={() => removeCart(data?.id)}
                         color="red"
                         style={{
                           position: "absolute",

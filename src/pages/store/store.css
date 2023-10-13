@@ -145,6 +145,14 @@ cursor: pointer;
     align-items: start;
     justify-content: start;
     overflow-y: scroll;
+  
+}
+.CartProductWrapper::-webkit-scrollbar{
+    width: 10px;
+}
+CartProductWrapper::-webkit-scrollbar-thumb{
+    background: #854242; /* Color of the thumb */
+  border-radius: 5px;
 }
 
 .bottomContentWrapper{
@@ -461,3 +469,14 @@ font-size: 17px;
  .dateBlack, .homeBlack{
     color: #000;
  }
+
+
+
+
+ 
+  
+  
+  
+  
+  
+  
